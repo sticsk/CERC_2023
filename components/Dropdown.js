@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Popper from "popper.js";
+import { createPopper } from "@popperjs/core";
 import Link from "next/link";
 
 const Dropdown = ({ color }) => {
@@ -9,7 +9,7 @@ const Dropdown = ({ color }) => {
 	const btnDropdownRef = React.createRef();
 	const popoverDropdownRef = React.createRef();
 	const openDropdownPopover = () => {
-		new Popper(btnDropdownRef.current, popoverDropdownRef.current, {
+		createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
 			placement: "bottom-start",
 		});
 		setDropdownPopoverShow(true);
