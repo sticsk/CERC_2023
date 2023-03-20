@@ -153,9 +153,7 @@ export default function Manager() {
 
 					canaleintermodulatii = [...new Set(canaleintermodulatii)];
 
-					canaleintermodulatii = canaleintermodulatii.filter((x) => 
-						x.length <= +nrfreqinterm
-					);
+					canaleintermodulatii = canaleintermodulatii.filter((x) => x.length <= +nrfreqinterm);
 
 					console.log(canaleintermodulatii);
 
@@ -320,7 +318,7 @@ export default function Manager() {
 									Sort
 								</button>
 							</span>
-							Plan de frecvente{" "}
+							Frequency Plan{" "}
 						</h2>
 						<div className="mt-4 static md:border-r-4 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-gray-600 scrollbar-track-gray-300 overflow-y-auto border-slate-400 pr-6  md:h-[60vh]  ">
 							<table className=" radius-xl table w-full  border-2  border-gray-700 font-medium bg-slate-400">
@@ -386,7 +384,7 @@ export default function Manager() {
 										>
 											?
 										</span>{" "}
-										Nr. Armonici ( 1-7 )
+										Harmonics No. ( 1-7 )
 									</label>
 									{boolarmonici && (
 										<div className=" p-1 pt-0 absolute bg-gray-400 border-2  font-medium border-gray-700 mr-16 z-100 rounded-md">
@@ -418,7 +416,7 @@ export default function Manager() {
 										htmlFor="password"
 										className="block px-1 mb-1 font-bold  text-md text-gray-900 "
 									>
-										Lungime Set
+										Set length
 									</label>
 									<input
 										type="number"
@@ -433,7 +431,7 @@ export default function Manager() {
 								</div>
 							</div>
 							<div className="mb-2 w-full pb-5 -mt-4 ">
-								<label htmlFor="email" className="block mb-1 font-bold text-md text-gray-900 ">
+								<label htmlFor="email" className="block mb-1  font-bold text-md text-gray-900 ">
 									<span
 										// onMouseOver={handleMouseOver}
 										// onMouseOut={handleMouseOut}
@@ -442,19 +440,12 @@ export default function Manager() {
 									>
 										?
 									</span>{" "}
-									Numar frecvente luate in combinare ( 2-{nrfreq} )
-								</label>
-								{boolarmonici && (
-									<div className=" p-1 pt-0 absolute bg-gray-400 border-2  font-medium border-gray-700 mr-16 z-100 rounded-md">
-										{" "}
-										Armonica unei frecvente este egală cu un multiplu întreg al frecvenţei
-										fundamentale <br />
-										Ex: Pentru frecventa de <span className="font-bold">20MHz</span> avem urmatoarle
-										armonici:{" "}
-										<span className="font-bold">40MHz(I) - 60MHz(II) - 80(III) - 100MHz(IV)</span>
-										<img alt="armonici" src="\images\armonici.png"></img>
+									Number of frequencies taken in combination
+									<br />
+									<div className="ml-7 text-green-700">
+										<span className=""> Min:2 and {" Max:" + nrfreq} </span>
 									</div>
-								)}
+								</label>
 								<input
 									min="2"
 									max={nrfreq}
@@ -478,14 +469,14 @@ export default function Manager() {
 									>
 										{" "}
 										<div className="  w-full">
-											<span
+											{/* <span
 												onMouseOver={handleMouseOverI}
 												onMouseOut={handleMouseOutI}
 												className="bg-gray-400  px-1.5 mr-1 -ml-2 py-0 text-red-700 border-2 border-red-600  font-bold rounded-full"
 											>
 												?
-											</span>
-											<span class=" "> Numar de armonici pentru calcul interarmonici.</span>
+											</span> */}
+											{/* <span class=" "> Numar de armonici pentru calcul interarmonici.</span> */}
 											{boolintermodulatii && (
 												<div className="p-1 absolute pt-0 bg-gray-400 border-2  font-medium border-gray-700 mr-16 z-100 rounded-md">
 													{" "}
@@ -506,7 +497,7 @@ export default function Manager() {
 											)}
 										</div>
 									</label>
-									<input
+									{/* <input
 										type="radio"
 										value="1"
 										name="val"
@@ -531,8 +522,8 @@ export default function Manager() {
 										onChange={handleChangeInput}
 										id="val3"
 										className="w-4 h-4 ml-6"
-									></input>{" "}
-									<label className="text-md font-bold ml-1">2</label>
+									></input>{" "} */}
+									{/* <label className="text-md font-bold ml-1">2</label> */}
 								</div>
 								<div className="md:flex -mt-3">
 									<div className="mb-2 font-bold w-full ">
@@ -545,7 +536,7 @@ export default function Manager() {
 											>
 												?
 											</span>{" "}
-											Numar canale adiacente interarmonici
+											Number of interharmonic adjacent channels
 										</label>
 										<input
 											className="w-4 h-4 ml-6"
@@ -603,7 +594,7 @@ export default function Manager() {
 									// onClick={ handleSubmit}
 									className="text-white shadow-lg -mt-0.5 py-2.5 mb-2 text-sm font-bold md:whitespace-nowrap w-full  ml-1.5 bg-green-700 border-2 hover:border-green-500 border-green-600 rounded-lg"
 								>
-									Genereaza Set Frecvente
+									Generate Frequency Set{" "}
 								</button>
 							</div>
 						</form>
@@ -626,8 +617,8 @@ export default function Manager() {
 							<thead className="  top-0 z-5 bg-slate-400 border-b border-gray-800">
 								<tr>
 									<th className="border-2  border-gray-700">Nr.</th>
-									<th className="px-1 border-2 border-gray-700">Frecventa (MHz)</th>
-									<th className="px-1 border-2 border-gray-700 ">Banda RF (kHz)</th>
+									<th className="px-1 border-2 border-gray-700">Frequency (MHz)</th>
+									<th className="px-1 border-2 border-gray-700 ">RF Band  (kHz)</th>
 									<th className=" border-2 border-gray-700 ">
 										<svg
 											className="mx-auto "
@@ -667,7 +658,7 @@ export default function Manager() {
 									type="submit"
 									className="text-white mt-4 ml-2 w-full shadow-lg py-2.5 mb-2 text-sm font-bold  md:whitespace-nowrap rounded-lg  px-5  border-2 hover:bg-[#435ed4] border-[#1630a3] bg-[#344cb3]"
 								>
-									Salveaza Set Frecvente
+									Save Frequency set
 								</button>
 							) : null}
 						</form>

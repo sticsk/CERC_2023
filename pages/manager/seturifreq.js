@@ -75,7 +75,7 @@ export default function Manager() {
 						className="text-white flex w-1/2 justify-center shadow-xl -mt-2 py-2.5 mb-2 text-sm font-bold md:whitespace-nowrap -mr-1.5  bg-slate-900 hover:bg-slate-800 border-2 hover:border-green-500 border-green-600 rounded-lg"
 						onClick={() => downloadExcel(data)}
 					>
-						<span className="pr-4">Salveaza in Excell</span>
+						<span className="pr-4">Save as Excel</span>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="26px" height="26px">
 							<rect width="16" height="9" x="28" y="15" fill="#21a366" />
 							<path
@@ -124,7 +124,7 @@ export default function Manager() {
 						className="text-white flex w-1/2 justify-center shadow-xl -mt-2 py-2.5 mb-2 text-sm font-bold md:whitespace-nowrap -mr-1.5 ml-2.5 bg-red-600 hover:bg-red-700 border-2 hover:border-green-500 border-red-800 rounded-lg"
 						onClick={() => StergeSeturi()}
 					>
-						Sterge Seturi{" "}
+						Erase sets{" "}
 					</button>
 				</div>
 			</div>
@@ -133,7 +133,7 @@ export default function Manager() {
 				return (
 					<div key={i} className="md:w-3/5 w-4/5 mx-auto my-10">
 						<p className="text-xl font-bold text-green-700 text-center pb-2 ">
-							Setul {i + 1} de frecvente{" "}
+							Set {i + 1} of frequency{" "}
 						</p>
 						<table className=" radius-xl table w-full  border-2  border-gray-700 font-medium bg-slate-400">
 							<thead className="sticky  top-0 z-5 bg-slate-400 border-b border-gray-800">

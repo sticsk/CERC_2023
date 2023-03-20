@@ -62,22 +62,23 @@ const Armonici = () => {
 						</div>
 					);
 				})} */}
-			<div className="mx-auto w-0 mt-2 -mb-2">
+			<div className="mx-auto w-1/4 mt-2 -mb-2">
 				<button
 					onClick={() => {
 						sort();
 					}}
-					className="bg-blue-700 p-1 px-2 rounded-xl mr-2 md:mr-5 text-green-500"
+					className="bg-blue-700 p-1 whitespace-nowrap mx-auto px-2 rounded-xl mr-2 md:mr-5 text-green-500"
 				>
-					Sortare
+					Sort - Interference Channels
 				</button>
+				<h1 className="pl-4 text-grays-700">Limited to 1000 Chanels </h1>
 			</div>
 			<table className=" radius-xl table mt-4 w-4/5 mx-auto  border-2  border-gray-700 font-medium bg-slate-400">
 				<thead className="sticky  top-0 z-5 bg-slate-400 border-b border-gray-800">
 					<tr>
 						<th className="border-2  border-gray-700">Nr.</th>
-						<th className="px-1 border-2 border-gray-700">Canal (MHz)</th>
-						<th className="px-1 border-2 border-gray-700">Frecventa (MHz)</th>
+						<th className="px-1 border-2 border-gray-700">Chanel (MHz)</th>
+						<th className="px-1 border-2 border-gray-700">Frequency (MHz)</th>
 						<th className="px-1 border-2 border-gray-700 ">Band (kHz)</th>
 						{/* <th className=" border-2 border-gray-700 ">
 											<svg                    

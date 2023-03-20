@@ -152,7 +152,7 @@ export default function Manager() {
 			},
 		});
 
-		setFarr([...farr, { frecventa, band: banda, putere, distanta }]);
+		setFarr([...farr, { frecventa, band: banda }]);
 	};
 	useEffect(() => {
 		dispatch({
@@ -194,7 +194,7 @@ export default function Manager() {
 									htmlFor="email"
 									className="block  mb-2 px-1 font-bold pt-1 text-md m text-gray-900 "
 								>
-									Frecventa ( MHz )
+									Frequency ( MHz )
 								</label>
 								<input
 									type="number"
@@ -212,7 +212,7 @@ export default function Manager() {
 									htmlFor="password"
 									className="block  mb-2 px-1 font-bold pt-1 text-md text-gray-900 "
 								>
-									Banda ( kHz )
+									Band ( kHz )
 								</label>
 								<input
 									type="number"
@@ -272,12 +272,12 @@ export default function Manager() {
 								onClick={handleSubmit}
 								className="text-white  shadow-xl -mt-0.5 py-2.5 mb-1 text-sm font-bold md:whitespace-nowrap w-full  ml-1.5 bg-green-700 border-2 hover:border-green-500 border-green-600 rounded-lg"
 							>
-								Adauga Frecventa
+								Add Frequency
 							</button>
 							<div className="flex">
 								<label for="first_name" class="block mb-2 text-sm font-bold text-red-600">
 									<span class="bg-green-100 rounded-xl px-2 font-bold text-md mr-1">!!</span>EXCEL:
-									Col 1 - Frecventa ^ Col 2 - Banda
+									Col 1 - Frequency ^ Col 2 - Band
 								</label>
 							</div>
 							<div className="grid sm:grid-cols-2 ">
@@ -346,7 +346,7 @@ export default function Manager() {
 									className="text-white flex justify-center shadow-xl  -mt-2 py-2.5 mb-2 text-sm font-bold md:whitespace-nowrap -mr-1.5 ml-1.5 bg-slate-900 hover:bg-slate-800 border-2 hover:border-green-500 border-green-600 rounded-lg"
 									onClick={() => downloadExcel(data)}
 								>
-									<span className="pr-6">Template excell</span>
+									<span className="pr-6">Excel Template </span>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 48 48"
@@ -406,7 +406,7 @@ export default function Manager() {
 								onClick={DeleteFarr}
 								className="text-white w-full text-center  ml-1 pl-4 -mr-2 md:whitespace-nowrap font-medium rounded-lg text-sm px-5 py-2.5 border-2 hover:bg-[#ec2415] border-[#910000]  bg-[#da0000]"
 							>
-								Sterge Set
+								Erase all data
 							</button>
 						</div>
 					</form>
@@ -414,7 +414,7 @@ export default function Manager() {
 					<div>
 						{" "}
 						<h2 className=" ml-3  mt-4 border-t-4 border-gray-700 text-xl md:text-2xl font-bold tracking-wide">
-							Tabel frecvente alocate ~ ( {farr.length} )
+							~ Frequency table ~ ( {farr.length} )
 						</h2>
 						<div
 							className="hidden md:flex "
@@ -425,10 +425,10 @@ export default function Manager() {
 							<span className="bg-gray-400 px-1.5 mr-1 -ml-2  text-red-700 border-2 border-red-600  font-bold rounded-full">
 								?
 							</span>{" "}
-							<span className=" -pt-3"> Range Frecvente</span>
+							<span className=" -pt-3">Frequency Range </span>
 						</div>
 						{isHovering && (
-							<div className=" font-bold text-slate-800 border-4 rounded-md ml-4 border-slate-700 ">
+							<div className=" font-bold text-slate-800 border-l-4   border-r-4 border-t-4 rounded-sm ml-4 border-slate-700 ">
 								<h2 className="">2 - 30 MHz - HF</h2>
 								<h2>30 - 108/300 MHz - VHF</h2>
 								<h2>300 - 3000 MHz(3GHz) - UHF</h2>
@@ -440,7 +440,7 @@ export default function Manager() {
 								<thead className="sticky  top-0 z-5 bg-slate-400 border-b border-gray-800">
 									<tr>
 										<th className="border-2  border-gray-700">Nr.</th>
-										<th className="px-1 border-2 border-gray-700">Freq (MHz)</th>
+										<th className="px-1 border-2 border-gray-700">Freqency (MHz)</th>
 										<th className="px-1 border-2 border-gray-700 ">Band (kHz)</th>
 										<th className=" border-2 border-gray-700 ">
 											<svg
@@ -500,10 +500,10 @@ export default function Manager() {
 																}
 															>
 																{" "}
-																Sterge
+																Delete
 															</button>
 														</td>
-														<td className="text-blue-700 ">
+														<td className="text-blue-700 border-l-2 border-gray-700">
 															<button
 																className="hover:scale-110"
 																onClick={() =>
@@ -519,7 +519,7 @@ export default function Manager() {
 																}
 															>
 																{" "}
-																Editeaza
+																Edit
 															</button>
 														</td>
 													</tr>

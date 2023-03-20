@@ -124,21 +124,7 @@ grow"
 						<div className="pl-3 md:flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 							<div id="mobile-menu" className="hidden md:block sm:ml-6 -mr-10">
 								<div className="flex md:space-x-3 space-x-1">
-									<Link
-										href="/"
-										className={
-											(path == "/" ? "bg-green-700 " : "bg-gray-700 ") +
-											"flex text-md border-2 hover:scale-105 border-sky-900 text-white text-center px-3 py-2 rounded-md  font-medium"
-										}
-										aria-current="page"
-									>
-										Planificare Retele
-										<img
-											className="ml-2 -mb-4 pb-4 h-10 w-8"
-											src="\icons\network.svg"
-											alt="rad"
-										></img>
-									</Link>
+								
 									{/* {Object.keys(auth).length === 0 ? <></> : loggedRouter()} */}
 									<Link
 										href="/manager"
@@ -147,7 +133,7 @@ grow"
 											"flex text-center w-36 text-md border-2 hover:scale-105  border-sky-900 text-white pl-3 py-2 rounded-md  font-medium"
 										}
 									>
-										Manager RF
+										 RF Manager
 										<img
 											className="-mr-2 -mb-4 pb-3 h-10 w-12 "
 											src="\icons\svgmanager.svg"
@@ -155,6 +141,21 @@ grow"
 										></img>
 									</Link>
 									<Link
+										href="/"
+										className={
+											(path == "/" ? "bg-green-700 " : "bg-gray-700 ") +
+											"flex text-md border-2 hover:scale-105 border-sky-900 text-white text-center px-3 py-2 rounded-md  font-medium"
+										}
+										aria-current="page"
+									>
+										Helper
+										<img
+											className="ml-2 -mb-4 pb-4 h-10 w-8"
+											src="\icons\network.svg"
+											alt="rad"
+										></img>
+									</Link>
+									{/* <Link
 										href="/trafic"
 										className={
 											(path.includes("trafic") ? "bg-green-700 " : "bg-gray-700 ") +
@@ -183,7 +184,7 @@ grow"
 											src="\icons\user.svg"
 											alt="rad"
 										></img>
-									</Link>
+									</Link> */}
 								</div>
 							</div>
 						</div>
