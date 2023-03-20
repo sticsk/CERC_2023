@@ -10,6 +10,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx}\""
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
     "@sanity/client": "^3.4.1",
     "@stripe/stripe-js": "^1.44.1",
     "file-saver": "^2.0.5",
