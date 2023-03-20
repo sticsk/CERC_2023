@@ -19,7 +19,6 @@
     "popper.js": "^1.16.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-xls": "^0.1.1",
     "tailwind-scrollbar": "^2.0.1",
     "xlsx": "^0.18.5"
   },
