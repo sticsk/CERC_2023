@@ -10,13 +10,14 @@
     "format": "prettier --write \"src/**/*.{js,jsx}\""
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
     "@sanity/client": "^3.4.1",
     "@stripe/stripe-js": "^1.44.1",
     "file-saver": "^2.0.5",
     "gfg": "^1.0.0",
+    "i": "^0.3.7",
     "next": "13.0.0",
     "next-sanity-image": "^5.0.0",
-    "popper.js": "^1.16.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwind-scrollbar": "^2.0.1",
