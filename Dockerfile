@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install next react react-dom
+RUN npm install
 
 COPY . .
 
