@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Popper from "popper.js";
+import Popper from "@popperjs/core";
 import Link from "next/link";
 
 const Dropdown = ({ color }) => {
