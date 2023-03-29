@@ -103,10 +103,10 @@ const Dropdown = ({ color }) => {
 	);
 };
 
-export default function DropdownRender() {
-	return (
-		<>
-			<Dropdown color="white" />
-		</>
-	);
-}
+// export default function DropdownRender() {
+// 	return (
+// 		<>
+// 			<Dropdown color="white" />
+// 		</>
+// 	);
+// }

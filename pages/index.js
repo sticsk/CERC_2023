@@ -75,3 +75,11 @@ export default function Home() {
 		</div>
 	);
 }
+export async function getServerSideProps() {
+  return {
+    redirect: {
+      destination: '/manager',
+      permanent: false, // Set this to true if you want the redirect to be permanent
+    },
+  };
+}

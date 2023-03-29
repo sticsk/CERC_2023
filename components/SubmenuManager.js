@@ -27,7 +27,7 @@ export default function SubmenuManager() {
 					type="button"
 					className={
 						(path == "/manager/procesare" ? "bg-green-700 " : "bg-gray-700 ") +
-						" inline-flex text-center rounded-md hover:scale-105 md:w-48  w-2/5 items-center py-1  pl-2 md:py-2 md:px-4 text-sm font-normal text-gray-900 border mr-2  border-white dark:text-white "
+						" inline-flex text-center rounded-md hover:scale-105 md:w-48  w-2/5 items-center py-1 mb-1  pt-1.5  pl-2 md:py-2 md:px-4 text-sm font-normal text-gray-900 border mr-2  border-white dark:text-white  "
 					}
 				>
 					<svg
@@ -45,7 +45,7 @@ export default function SubmenuManager() {
 					href="/manager/seturifreq"
 					className={
 						(path == "/manager/seturifreq" ? "bg-green-700 " : "bg-gray-700 ") +
-						" inline-flex  text-center rounded-md hover:scale-105 md:w-48   w-2/5 items-center py-1  pl-1.5 md:py-2 md:px-4 text-sm font-normal text-gray-900 border mr-2  border-white dark:text-white "
+						" inline-flex text-center rounded-md hover:scale-105 md:w-48  w-2/5 items-center py-1  pl-2 md:py-2 md:px-4 text-sm font-normal text-gray-900 border mr-2  border-white dark:text-white "
 					}
 				>
 					<svg
@@ -67,7 +67,7 @@ export default function SubmenuManager() {
 					href="/manager/armonici"
 					className={
 						(path == "/manager/armonici" ? "bg-green-700 " : "bg-gray-700 ") +
-						" inline-flex text-center rounded-md hover:scale-105 md:w-52 w-2/5 items-center py-1  pl-1.5 md:py-2 md:px-4 text-sm font-normal text-gray-900 border mr-2  border-white dark:text-white "
+						" inline-flex text-center rounded-md hover:scale-105 md:w-48  w-2/5 items-center py-1  pl-2 md:py-2 md:px-4 text-sm font-normal text-gray-900 border mr-2  border-white dark:text-white  "
 					}
 				>
 					<svg
