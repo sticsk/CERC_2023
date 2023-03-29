@@ -389,10 +389,9 @@ export default function Manager() {
 									{boolarmonici && (
 										<div className=" p-1 pt-0 absolute bg-gray-400 border-2  font-medium border-gray-700 mr-16 z-100 rounded-md">
 											{" "}
-											Armonica unei frecvente este egală cu un multiplu întreg al frecvenţei
-											fundamentale <br />
-											Ex: Pentru frecventa de <span className="font-bold">20MHz</span> avem
-											urmatoarle armonici:{" "}
+											The harmonic of a frequency is equal to an integer multiple of the fundamental
+											frequency.Example:for a frequency of <span className="font-bold">20MHz</span>,
+											the following harmonics exist:{" "}
 											<span className="font-bold">40MHz(I) - 60MHz(II) - 80(III) - 100MHz(IV)</span>
 											<img alt="armonici" src="\images\armonici.png"></img>
 										</div>
@@ -431,18 +430,10 @@ export default function Manager() {
 								</div>
 							</div>
 							<div className="mb-2 w-full pb-5 -mt-4 ">
-								<label htmlFor="email" className="block mb-1  font-bold text-md text-gray-900 ">
-									<span
-										// onMouseOver={handleMouseOver}
-										// onMouseOut={handleMouseOut}
-										data-tooltip-target="tooltip-default"
-										className="bg-gray-400 px-1.5 hover:scale-110  py-0 text-md text-red-700 border-2 border-red-600  font-bold rounded-full"
-									>
-										?
-									</span>{" "}
+								<label htmlFor="email" className="block mb-1 ml-7 font-bold text-md text-gray-900 ">
 									Number of frequencies taken in combination
 									<br />
-									<div className="ml-7 text-green-700">
+									<div className=" text-green-700">
 										<span className=""> Min:2 and {" Max:" + nrfreq} </span>
 									</div>
 								</label>
@@ -464,6 +455,16 @@ export default function Manager() {
 							<div className=" -mt-3">
 								<div className="mb-6 w-full form-check">
 									<label
+										htmlFor="email"
+										className="block mb-1 ml-7 font-bold text-md text-gray-900 "
+									>
+										Order of intermodulation ( Default 2 )
+										<br />
+										<div className=" text-green-700">
+											{/* <span className=""> Min:2 and {" Max:" + nrfreq} </span> */}
+										</div>
+									</label>
+									<label
 										htmlFor="password"
 										className="block  ml-2 font-bold  text-md text-gray-900 "
 									>
@@ -477,7 +478,7 @@ export default function Manager() {
 												?
 											</span> */}
 											{/* <span class=" "> Numar de armonici pentru calcul interarmonici.</span> */}
-											{boolintermodulatii && (
+											{/* {boolintermodulatii && (
 												<div className="p-1 absolute pt-0 bg-gray-400 border-2  font-medium border-gray-700 mr-16 z-100 rounded-md">
 													{" "}
 													Intermodulația este modularea în amplitudine a semnalelor care conțin două
@@ -494,10 +495,10 @@ export default function Manager() {
 														src="\images\intermodulatii.png"
 													></img>
 												</div>
-											)}
+											)} */}
 										</div>
 									</label>
-									{/* <input
+									<input
 										type="radio"
 										value="1"
 										name="val"
@@ -522,21 +523,35 @@ export default function Manager() {
 										onChange={handleChangeInput}
 										id="val3"
 										className="w-4 h-4 ml-6"
-									></input>{" "} */}
-									{/* <label className="text-md font-bold ml-1">2</label> */}
+									></input>{" "}
+									<label className="text-md font-bold ml-1">2</label>
 								</div>
 								<div className="md:flex -mt-3">
 									<div className="mb-2 font-bold w-full ">
 										<label htmlFor="email" className="block mb-1 font-bold text-md text-gray-900 ">
 											<span
-												// onMouseOver={handleMouseOver}
-												// onMouseOut={handleMouseOut}
+												onMouseOver={handleMouseOverI}
+												onMouseOut={handleMouseOutI}
 												data-tooltip-target="tooltip-default"
 												className="bg-gray-400 px-1.5 hover:scale-110  py-0 text-md text-red-700 border-2 border-red-600  font-bold rounded-full"
 											>
 												?
 											</span>{" "}
-											Number of interharmonic adjacent channels
+											{boolintermodulatii && (
+												<div className="p-1 absolute pt-0 bg-gray-400 border-2  font-medium border-gray-700 mr-16 z-100 rounded-md">
+													{" "}
+													The number of adjacent channels refers to the directly neighboring radio
+													frequency channels without any other channels in between. It is important
+													for radio frequency planning as interference from adjacent channels can
+													affect communication system performance.
+													<span className="font-bold">
+														Emaple: For a frequency of 90 Mhz with 3 chanels of 100 Khz each {"=>"}{" "}
+														occupied spectrum from 89.7 Mhz - 90.3 Mhz{" "}
+													</span>
+													<img className="w-full" alt="armonici" src="\images\chadiacent.png"></img>
+												</div>
+											)}
+											Number of adjacent channels
 										</label>
 										<input
 											className="w-4 h-4 ml-6"
@@ -618,7 +633,7 @@ export default function Manager() {
 								<tr>
 									<th className="border-2  border-gray-700">Nr.</th>
 									<th className="px-1 border-2 border-gray-700">Frequency (MHz)</th>
-									<th className="px-1 border-2 border-gray-700 ">RF Band  (kHz)</th>
+									<th className="px-1 border-2 border-gray-700 ">RF Band (kHz)</th>
 									<th className=" border-2 border-gray-700 ">
 										<svg
 											className="mx-auto "

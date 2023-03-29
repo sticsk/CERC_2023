@@ -97,15 +97,11 @@ function NavBar() {
 		<div>
 			<nav className="bg-gray-800 ">
 				<div className=" max-w-7xl mx-auto pl-2 sm:px-6 lg:px-8">
-					<div className="relative flex items-center justify-between h-16">
+					<div className="relative flex  items-center justify-start h-16">
 						<div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
-						<div className="md:hidden ">
-							{" "}
-							<div className=""></div> <DropdownRender />
-						</div>
+						<div className=" "> {/* <div className=""></div> <DropdownRender /> */}</div>
 						<div
-							className="md:hidden
-grow"
+						
 						></div>
 						<div className="flex-shrink-1 flex items-center">
 							<Link
@@ -122,9 +118,8 @@ grow"
 							</Link>
 						</div>
 						<div className="pl-3 md:flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-							<div id="mobile-menu" className="hidden md:block sm:ml-6 -mr-10">
+							<div id="mobile-menu" className=" md:block sm:ml-6 -mr-10">
 								<div className="flex md:space-x-3 space-x-1">
-								
 									{/* {Object.keys(auth).length === 0 ? <></> : loggedRouter()} */}
 									<Link
 										href="/manager"
@@ -133,7 +128,7 @@ grow"
 											"flex text-center w-36 text-md border-2 hover:scale-105  border-sky-900 text-white pl-3 py-2 rounded-md  font-medium"
 										}
 									>
-										 RF Manager
+										RF Manager
 										<img
 											className="-mr-2 -mb-4 pb-3 h-10 w-12 "
 											src="\icons\svgmanager.svg"
@@ -141,9 +136,9 @@ grow"
 										></img>
 									</Link>
 									<Link
-										href="/"
+										href="/helper"
 										className={
-											(path == "/" ? "bg-green-700 " : "bg-gray-700 ") +
+											(path == "/helper" ? "bg-green-700 " : "bg-gray-700 ") +
 											"flex text-md border-2 hover:scale-105 border-sky-900 text-white text-center px-3 py-2 rounded-md  font-medium"
 										}
 										aria-current="page"
@@ -189,7 +184,7 @@ grow"
 							</div>
 						</div>
 						<div className="static inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-							<div className="ml-3 relative">
+							{/* <div className="ml-3 relative">
 								<div>
 									<button
 										type="button"
@@ -201,7 +196,7 @@ grow"
 										<span className="sr-only">Open user menu</span>
 									</button>
 								</div>
-							</div>
+							</div> */}
 							{/* {Object.keys(auth).length === 0 ? (
                 <>
                 <Link  href="/login">
