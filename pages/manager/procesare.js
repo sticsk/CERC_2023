@@ -6,7 +6,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../store/GlobalState";
 
 export default function Manager() {
-	const [selectedValue, setSelectedValue] = useState(0);
+	const [selectedValue, setSelectedValue] = useState("2");
+	const [selectedValueBaza, setSelectedValueBaza] = useState("5");
 
 	const [boolarmonici, setBoolarmonici] = useState(false);
 	const [boolintermodulatii, setBoolintermodulatii] = useState(false);
@@ -22,7 +23,7 @@ export default function Manager() {
 		dispatch({
 			type: "NOTIFY",
 			payload: {
-				success: "Frecvente Sortate cu success", // mesaj de avertizare
+				success: "Success sort", // mesaj de avertizare
 			},
 		});
 	}
@@ -44,8 +45,11 @@ export default function Manager() {
 	const handleMouseOutI = () => {
 		setBoolintermodulatii(false);
 	};
+	const handleChangeBaza = (e) => {
+		setSelectedValueBaza(e.target.value);
+	};
 	//---------------------------------------------------------------------------------------------
-	const initialState = { armonica: 3, nrfreq: 5, val: 3, nrfreqinterm: 2, chadiacent: 5 };
+	const initialState = { armonica: 3, nrfreq: 5, val: "1+2", nrfreqinterm: 2, chadiacent: 5 };
 	const [procesaredata, setProcesaredata] = useState(initialState);
 	const { armonica, nrfreq, nrfreqinterm } = procesaredata;
 
@@ -74,7 +78,7 @@ export default function Manager() {
 			dispatch({
 				type: "NOTIFY",
 				payload: {
-					error: "Armoinca este mai mare deca  si mai mica decat 7", // mesaj de avertizare
+					error: "Harmonic between 1 and 7", // mesaj de avertizare
 				},
 			});
 			setProcesaredata(initialState);
@@ -84,7 +88,7 @@ export default function Manager() {
 			dispatch({
 				type: "NOTIFY",
 				payload: {
-					error: "Armoinca este numar intreg", // mesaj de avertizare
+					error: "Harmonic have to be natural number", // mesaj de avertizare
 				},
 			});
 			setProcesaredata(initialState);
@@ -162,10 +166,14 @@ export default function Manager() {
 							results.push(currentResult);
 							return;
 						}
-						generateCombinations(array, index + 1, +currentResult + +array[index], results);
+						if (+procesaredata.val == 1 || procesaredata.val == "1+2")
+							generateCombinations(array, index + 1, +currentResult + +array[index], results);
 						generateCombinations(array, index + 1, +currentResult - +array[index], results);
-						generateCombinations(array, index + 1, +currentResult + +array[index] * 2, results);
-						generateCombinations(array, index + 1, +currentResult - +array[index] * 2, results);
+
+						if (+procesaredata.val == 2 || procesaredata.val == "1+2") {
+							generateCombinations(array, index + 1, +currentResult + +array[index] * 2, results);
+							generateCombinations(array, index + 1, +currentResult - +array[index] * 2, results);
+						}
 					}
 
 					function generateCombinationsChar(array, index, currentResult, results) {
@@ -238,7 +246,7 @@ export default function Manager() {
 							fi: fi,
 							fs: fs,
 							freq: +defaultarr[i].frecventa,
-							type: `Canal de Baza : ${defaultarr[i].frecventa}`,
+							type: `Base chanel : ${defaultarr[i].frecventa}`,
 							band: defaultarr[i].band * 5,
 						});
 					}
@@ -249,7 +257,7 @@ export default function Manager() {
 							fi: fi,
 							fs: fs,
 							freq: +defaultarr[i].frecventa,
-							type: `Armonica : Frecventa ${defaultarr[i].frecventa} * Armonica ${k}`,
+							type: `Harmoic : freq ${defaultarr[i].frecventa} * Harmoic ${k}`,
 							band: defaultarr[i].band,
 						});
 					}
@@ -285,7 +293,7 @@ export default function Manager() {
 				seturi: swap2,
 			},
 		});
-		dispatch({ type: "NOTIFY", payload: { success: "Set de " + nrfreq + " frecvente adaugat" } });
+		dispatch({ type: "NOTIFY", payload: { success: "Set of " + nrfreq + " frequencies  added" } });
 
 		setSubset(swap2);
 		setFreqProcesate([]);
@@ -503,28 +511,38 @@ export default function Manager() {
 										value="1"
 										name="val"
 										onChange={handleChangeInput}
+										checked={procesaredata.val == "1"}
 										id="val1"
 										className="w-4 h-4 ml-6"
 									></input>{" "}
-									<label className="text-md grow font-bold ml-1">0</label>
+									<label className="text-md grow font-bold ml-1">
+										<span className="text-red-600 font-bold text-md">I:</span> F1 ± F2{" "}
+									</label>
 									<input
 										type="radio"
 										value="2"
 										name="val"
 										onChange={handleChangeInput}
 										id="val2"
-										className="w-4 h-4 ml-6"
+										className="w-4 h-4 ml-2"
+										checked={procesaredata.val == "2"}
 									></input>{" "}
-									<label className="text-md grow font-bold ml-1">1</label>
+									<label className="text-md grow font-bold ml-1">
+										<span className="text-red-600 font-bold text-md">II :</span> 2F1 ± F2 sau 2F2 ±
+										F1{" "}
+									</label>
 									<input
 										type="radio"
-										value="3"
+										value="1+2"
 										name="val"
 										onChange={handleChangeInput}
+										checked={procesaredata.val == "1+2"}
 										id="val3"
-										className="w-4 h-4 ml-6"
+										className="w-4 h-4 ml-2"
 									></input>{" "}
-									<label className="text-md font-bold ml-1">2</label>
+									<label className="text-md font-bold ml-1">
+										<span className="text-red-600 font-bold text-md">I + II</span>
+									</label>
 								</div>
 								<div className="md:flex -mt-3">
 									<div className="mb-2 font-bold w-full ">
@@ -551,7 +569,79 @@ export default function Manager() {
 													<img className="w-full" alt="armonici" src="\images\chadiacent.png"></img>
 												</div>
 											)}
-											Number of adjacent channels
+											Number of adjacent channels for base chanel
+										</label>
+										<input
+											className="w-4 h-4 ml-6"
+											type="radio"
+											id="option21"
+											name="chadiacentBaza"
+											value="1"
+											onChange={handleChangeBaza}
+											checked={selectedValueBaza === "1"}
+										/>
+										<label for="option1">1</label>
+
+										<input
+											className="w-4 h-4 ml-6"
+											type="radio"
+											id="option22"
+											name="chadiacentBaza"
+											value="2"
+											onChange={handleChangeBaza}
+											checked={selectedValueBaza === "2"}
+										/>
+										<label for="option2">2</label>
+
+										<input
+											className="w-4 h-4 ml-6"
+											type="radio"
+											id="option23"
+											name="chadiacentBaza"
+											value="3"
+											onChange={handleChangeBaza}
+											checked={selectedValueBaza === "3"}
+										/>
+										<label for="option3">3</label>
+
+										<input
+											className="w-4 h-4 ml-6"
+											type="radio"
+											id="option24"
+											name="chadiacentBaza"
+											value="4"
+											onChange={handleChangeBaza}
+											checked={selectedValueBaza === "4"}
+										/>
+										<label for="option4">4</label>
+
+										<input
+											className="w-4 h-4 ml-6"
+											type="radio"
+											id="option25"
+											name="chadiacentBaza"
+											checked={selectedValueBaza === "5"}
+											value="5"
+											onChange={handleChangeBaza}
+										/>
+										<label for="option5">5</label>
+										<input
+											className="w-4 h-4 ml-6"
+											type="radio"
+											id="option25"
+											name="chadiacentBaza"
+											checked={selectedValueBaza === "10"}
+											value="10"
+											onChange={handleChangeBaza}
+										/>
+										<label for="option5">10</label>
+									</div>
+								</div>
+
+								<div className="md:flex -mt-3">
+									<div className="mb-2 font-bold w-full ">
+										<label htmlFor="email" className="block mb-1 font-bold text-md text-gray-900 ">
+											<span className="pl-6"></span> Number of adjacent channels for intermoduations
 										</label>
 										<input
 											className="w-4 h-4 ml-6"
@@ -560,10 +650,12 @@ export default function Manager() {
 											name="chadiacent"
 											value="1"
 											onChange={handleChange}
+											checked={selectedValue === "1"}
 										/>
 										<label for="option1">1</label>
 
 										<input
+											checked={selectedValue === "2"}
 											className="w-4 h-4 ml-6"
 											type="radio"
 											id="option22"
@@ -574,6 +666,7 @@ export default function Manager() {
 										<label for="option2">2</label>
 
 										<input
+											checked={selectedValue === "3"}
 											className="w-4 h-4 ml-6"
 											type="radio"
 											id="option23"
@@ -584,6 +677,7 @@ export default function Manager() {
 										<label for="option3">3</label>
 
 										<input
+											checked={selectedValue === "4"}
 											className="w-4 h-4 ml-6"
 											type="radio"
 											id="option24"
@@ -594,6 +688,7 @@ export default function Manager() {
 										<label for="option4">4</label>
 
 										<input
+											checked={selectedValue === "5"}
 											className="w-4 h-4 ml-6"
 											type="radio"
 											id="option25"

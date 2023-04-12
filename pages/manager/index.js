@@ -89,7 +89,7 @@ export default function Manager() {
 						type: "NOTIFY",
 						payload: {
 							error: `${
-								"Duplicate gasite si sterse la frecventale:" +
+								"Duplicates found and removed" +
 								duplicates.map((e) => e.frecventa + "MHz ")
 							}`,
 						},
@@ -119,7 +119,7 @@ export default function Manager() {
 			dispatch({
 				type: "NOTIFY",
 				payload: {
-					error: "Dublura la frecventa de " + frecventa + " MHz",
+					error: "Duplicate at " + frecventa + " MHz",
 				},
 			});
 
@@ -129,7 +129,7 @@ export default function Manager() {
 			dispatch({
 				type: "NOTIFY",
 				payload: {
-					error: "Frecventa > 1 MHz si < 10000 MHz",
+					error: "freq > 1 MHz si < 10000 MHz",
 				},
 			});
 			setFdata(initialState);
@@ -139,7 +139,7 @@ export default function Manager() {
 			dispatch({
 				type: "NOTIFY",
 				payload: {
-					error: "Banda > 2 kHz si < 5000 kHz",
+					error: "Band > 2 kHz si < 5000 kHz",
 				},
 			});
 			setFdata(initialState);
@@ -148,7 +148,7 @@ export default function Manager() {
 		dispatch({
 			type: "NOTIFY",
 			payload: {
-				success: " Frecventa " + frecventa + " de MHz  ---> " + "Banda de " + banda + " Khz",
+				success: " Frequency " + frecventa + " de MHz  --> " + "Band of " + banda + " Khz ",
 			},
 		});
 
@@ -165,9 +165,9 @@ export default function Manager() {
 	const DeleteFarr = (e) => {
 		e.preventDefault();
 		const response = prompt(
-			"Doriti sa stergeti setul de frecvente, pentru confimrare scrieti `da`"
+			"Are you sure to delete frequencies set `yes`"
 		);
-		if (response == "da") {
+		if (response == "yes") {
 			setFarr([]);
 		}
 	};

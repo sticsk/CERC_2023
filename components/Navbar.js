@@ -143,7 +143,7 @@ function NavBar() {
 										}
 										aria-current="page"
 									>
-										Helper
+										Help
 										<img
 											className="ml-2 -mb-4 pb-4 h-10 w-8"
 											src="\icons\network.svg"
