@@ -22,10 +22,10 @@ export default function Manager() {
 	}
 	var obj = []
 	for (var m = 1; m < helparr.length ; m++) {
-		obj.push({'Nr set ':'Setul '+m })
+		obj.push({'No. ':' Set ' +m })
 		for (var x = 0; x < helparr[m-1].length; x++) 
 		{
-			obj.push({'Frecventa - MHz': helparr[m-1][x].frecventa, 'Banda - kHz': helparr[m-1][x].band }) 
+			obj.push({'Frequency - MHz': helparr[m-1][x].frecventa, 'Band - kHz': helparr[m-1][x].band }) 
 		}
 		// console.log(obj);
 	}
@@ -35,10 +35,10 @@ export default function Manager() {
 	const downloadExcel = (data) => {
 		const worksheet = XLSX.utils.json_to_sheet(data);
 		const workbook = XLSX.utils.book_new();
-		XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+		XLSX.utils.book_append_sheet(workbook, worksheet, "Frequencies_sets");
 		// let buffer = XLSX.write(workbook, { bookType: "xlsx", type: "buffer" });
 		XLSX.write(workbook, { bookType: "xlsx", type: "binary" });
-		XLSX.writeFile(workbook, "Seturi Frecvente .xlsx");
+		XLSX.writeFile(workbook, "Frequencies_sets.xlsx");
 	};
 
 	const StergeSeturi = () => {

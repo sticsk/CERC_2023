@@ -113,8 +113,9 @@ export default function Manager() {
 		setFdata({ ...fdata, [name]: value });
 	};
 	const handleSubmit = async (x) => {
+		console.log(farr)
 		x.preventDefault();
-		var dublura = farr.find((x) => x.frecventa == frecventa);
+		var dublura = farr.find((x) => +x.frecventa == +frecventa);
 		if (dublura) {
 			dispatch({
 				type: "NOTIFY",
@@ -129,7 +130,7 @@ export default function Manager() {
 			dispatch({
 				type: "NOTIFY",
 				payload: {
-					error: "freq > 1 MHz si < 10000 MHz",
+					error: "freq > 1 MHz and < 10000 MHz",
 				},
 			});
 			setFdata(initialState);

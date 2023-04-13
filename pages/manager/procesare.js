@@ -246,7 +246,7 @@ export default function Manager() {
 							fi: fi,
 							fs: fs,
 							freq: +defaultarr[i].frecventa,
-							type: `Base chanel : ${defaultarr[i].frecventa}`,
+							type: `Base channel : ${defaultarr[i].frecventa}`,
 							band: defaultarr[i].band * 5,
 						});
 					}
@@ -528,7 +528,7 @@ export default function Manager() {
 										checked={procesaredata.val == "2"}
 									></input>{" "}
 									<label className="text-md grow font-bold ml-1">
-										<span className="text-red-600 font-bold text-md">II :</span> 2F1 ± F2 sau 2F2 ±
+										<span className="text-red-600 font-bold text-md">II :</span> 2F1 ± F2 or 2F2 ±
 										F1{" "}
 									</label>
 									<input
@@ -569,7 +569,7 @@ export default function Manager() {
 													<img className="w-full" alt="armonici" src="\images\chadiacent.png"></img>
 												</div>
 											)}
-											Number of adjacent channels for base chanel
+											Number of adjacent channels for base channel
 										</label>
 										<input
 											className="w-4 h-4 ml-6"
@@ -641,7 +641,7 @@ export default function Manager() {
 								<div className="md:flex -mt-3">
 									<div className="mb-2 font-bold w-full ">
 										<label htmlFor="email" className="block mb-1 font-bold text-md text-gray-900 ">
-											<span className="pl-6"></span> Number of adjacent channels for intermoduations
+											<span className="pl-6"></span> Number of adjacent channels for interharmonics
 										</label>
 										<input
 											className="w-4 h-4 ml-6"
