@@ -30,8 +30,8 @@ export default function Manager() {
 
 	// const [items, setItems] = useState([]);
 	const [fdata, setFdata] = useState(initialState);
-	const { frecventa, banda,  } = fdata;
-	
+	const { frecventa, banda } = fdata;
+
 	const readExcel = (file) => {
 		const promise = new Promise((resolve, reject) => {
 			const fileReader = new FileReader();
@@ -69,7 +69,9 @@ export default function Manager() {
 		promise.then((d) => {
 			let arr = farr;
 
-			d.map((e) => arr.push({ frecventa: e[Object.keys(e)[0]].toFixed(3), band: e[Object.keys(e)[1]] }));
+			d.map((e) =>
+				arr.push({ frecventa: e[Object.keys(e)[0]].toFixed(3), band: e[Object.keys(e)[1]] })
+			);
 
 			var help = farr.filter(
 				(value, index, self) => index === self.findIndex((t) => t.frecventa === value.frecventa)
@@ -89,8 +91,7 @@ export default function Manager() {
 						type: "NOTIFY",
 						payload: {
 							error: `${
-								"Duplicates found and removed" +
-								duplicates.map((e) => e.frecventa + "MHz ")
+								"Duplicates found and removed" + duplicates.map((e) => e.frecventa + "MHz ")
 							}`,
 						},
 				  })
@@ -113,7 +114,7 @@ export default function Manager() {
 		setFdata({ ...fdata, [name]: value });
 	};
 	const handleSubmit = async (x) => {
-		console.log(farr)
+		console.log(farr);
 		x.preventDefault();
 		var dublura = farr.find((x) => +x.frecventa == +frecventa);
 		if (dublura) {
@@ -165,9 +166,7 @@ export default function Manager() {
 	}, [dispatch, farr]);
 	const DeleteFarr = (e) => {
 		e.preventDefault();
-		const response = prompt(
-			"Are you sure to delete frequencies set `yes`"
-		);
+		const response = prompt("Are you sure to delete frequencies set `yes`");
 		if (response == "yes") {
 			setFarr([]);
 		}
@@ -181,6 +180,25 @@ export default function Manager() {
 			},
 		});
 	};
+
+	function generateTestList() {
+		const newArray = [];
+		for (let i = 0; i < 20; i++) {
+			const randomNumber = Math.random() * 297 + 3;
+			const randomFrecventa = randomNumber.toFixed(2);
+			const newItem = { frecventa: randomFrecventa, band: 125 };
+			newArray.push(newItem);
+			// console.log(i,farr);
+			// setFarr([...farr, { frecventa:i, band: 25 }]);
+		}
+		const uniqueFarr = farr.filter(
+			(obj, index, self) => index === self.findIndex((t) => t.frecventa === obj.frecventa)
+		);
+		setFarr([...uniqueFarr, ...newArray]);
+		console.log();
+	}
+	console.log(farr);
+
 	return (
 		<div>
 			<SubmenuManager />
@@ -343,59 +361,68 @@ export default function Manager() {
 										</svg>
 									</label>
 								</div>
-								<button
-									className="text-white flex justify-center shadow-xl  -mt-2 py-2.5 mb-2 text-sm font-bold md:whitespace-nowrap -mr-1.5 ml-1.5 bg-slate-900 hover:bg-slate-800 border-2 hover:border-green-500 border-green-600 rounded-lg"
-									onClick={() => downloadExcel(data)}
-								>
-									<span className="pr-6">Excel Template </span>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 48 48"
-										width="26px"
-										height="26px"
+								<div className="flex">
+									{" "}
+									<button
+										className="text-white flex justify-center shadow-xl w-1/2  -mt-2 py-2.5 mb-2 text-sm font-bold md:whitespace-nowrap -mr-1.5 ml-1.5 bg-slate-900 hover:bg-slate-800 border-2 hover:border-green-500 border-green-600 rounded-lg"
+										onClick={() => downloadExcel(data)}
 									>
-										<rect width="16" height="9" x="28" y="15" fill="#21a366" />
-										<path
-											fill="#185c37"
-											d="M44,24H12v16c0,1.105,0.895,2,2,2h28c1.105,0,2-0.895,2-2V24z"
-										/>
-										<rect width="16" height="9" x="28" y="24" fill="#107c42" />
-										<rect width="16" height="9" x="12" y="15" fill="#3fa071" />
-										<path fill="#33c481" d="M42,6H28v9h16V8C44,6.895,43.105,6,42,6z" />
-										<path fill="#21a366" d="M14,6h14v9H12V8C12,6.895,12.895,6,14,6z" />
-										<path
-											d="M22.319,13H12v24h10.319C24.352,37,26,35.352,26,33.319V16.681C26,14.648,24.352,13,22.319,13z"
-											opacity=".05"
-										/>
-										<path
-											d="M22.213,36H12V13.333h10.213c1.724,0,3.121,1.397,3.121,3.121v16.425	C25.333,34.603,23.936,36,22.213,36z"
-											opacity=".07"
-										/>
-										<path
-											d="M22.106,35H12V13.667h10.106c1.414,0,2.56,1.146,2.56,2.56V32.44C24.667,33.854,23.52,35,22.106,35z"
-											opacity=".09"
-										/>
-										<linearGradient
-											id="flEJnwg7q~uKUdkX0KCyBa"
-											x1="4.725"
-											x2="23.055"
-											y1="14.725"
-											y2="33.055"
-											gradientUnits="userSpaceOnUse"
+										<span className="pr-6">Excel Template </span>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 48 48"
+											width="26px"
+											height="26px"
 										>
-											<stop offset="0" stopColor="#18884f" />
-											<stop offset="1" stopColor="#0b6731" />
-										</linearGradient>
-										<path
-											fill="url(#flEJnwg7q~uKUdkX0KCyBa)"
-											d="M22,34H6c-1.105,0-2-0.895-2-2V16c0-1.105,0.895-2,2-2h16c1.105,0,2,0.895,2,2v16	C24,33.105,23.105,34,22,34z"
-										/>
-										<path
-											fill="#fff"
-											d="M9.807,19h2.386l1.936,3.754L16.175,19h2.229l-3.071,5l3.141,5h-2.351l-2.11-3.93L11.912,29H9.526	l3.193-5.018L9.807,19z"
-										/>
-									</svg>
-								</button>
+											<rect width="16" height="9" x="28" y="15" fill="#21a366" />
+											<path
+												fill="#185c37"
+												d="M44,24H12v16c0,1.105,0.895,2,2,2h28c1.105,0,2-0.895,2-2V24z"
+											/>
+											<rect width="16" height="9" x="28" y="24" fill="#107c42" />
+											<rect width="16" height="9" x="12" y="15" fill="#3fa071" />
+											<path fill="#33c481" d="M42,6H28v9h16V8C44,6.895,43.105,6,42,6z" />
+											<path fill="#21a366" d="M14,6h14v9H12V8C12,6.895,12.895,6,14,6z" />
+											<path
+												d="M22.319,13H12v24h10.319C24.352,37,26,35.352,26,33.319V16.681C26,14.648,24.352,13,22.319,13z"
+												opacity=".05"
+											/>
+											<path
+												d="M22.213,36H12V13.333h10.213c1.724,0,3.121,1.397,3.121,3.121v16.425	C25.333,34.603,23.936,36,22.213,36z"
+												opacity=".07"
+											/>
+											<path
+												d="M22.106,35H12V13.667h10.106c1.414,0,2.56,1.146,2.56,2.56V32.44C24.667,33.854,23.52,35,22.106,35z"
+												opacity=".09"
+											/>
+											<linearGradient
+												id="flEJnwg7q~uKUdkX0KCyBa"
+												x1="4.725"
+												x2="23.055"
+												y1="14.725"
+												y2="33.055"
+												gradientUnits="userSpaceOnUse"
+											>
+												<stop offset="0" stopColor="#18884f" />
+												<stop offset="1" stopColor="#0b6731" />
+											</linearGradient>
+											<path
+												fill="url(#flEJnwg7q~uKUdkX0KCyBa)"
+												d="M22,34H6c-1.105,0-2-0.895-2-2V16c0-1.105,0.895-2,2-2h16c1.105,0,2,0.895,2,2v16	C24,33.105,23.105,34,22,34z"
+											/>
+											<path
+												fill="#fff"
+												d="M9.807,19h2.386l1.936,3.754L16.175,19h2.229l-3.071,5l3.141,5h-2.351l-2.11-3.93L11.912,29H9.526	l3.193-5.018L9.807,19z"
+											/>
+										</svg>
+									</button>
+									<button
+										className="text-white flex justify-center shadow-xl w-1/2   -mt-2 py-2.5 mb-2 text-sm font-bold md:whitespace-nowrap -mr-1.5 ml-2 bg-slate-900 hover:bg-slate-800 border-2 hover:border-green-500 border-green-600 rounded-lg"
+										onClick={(e) => generateTestList(e)}
+									>
+										Test List of 20 Frequency
+									</button>
+								</div>
 							</div>
 							{/* <button
 								onClick={SalveazaArr}
@@ -456,7 +483,7 @@ export default function Manager() {
 										</th>
 										<th className=" border-2  border-gray-700 ">
 											<svg
-											 className="mx-auto"
+												className="mx-auto"
 												width="20"
 												height="25"
 												viewBox="0 0 24 24"
@@ -480,9 +507,10 @@ export default function Manager() {
 													<tr key={index + 1}>
 														<th className="border-r-2  border-gray-700">{index + 1}</th>
 														<td className="border-r-2  border-gray-700">
-															{+x.frecventa >= 2 && +x.frecventa <= 30
+															{console.log(x.frecventa)}
+															{+x.frecventa >= +2 && +x.frecventa <= +30
 																? +x.frecventa + " - HF"
-																: x.frecventa >= 30 && x.frecventa <= 300
+																: x.frecventa >= +30 && x.frecventa <= +300
 																? x.frecventa + " - VHF"
 																: x.frecventa >= 300 && x.frecventa <= 3000
 																? x.frecventa + " - UHF"
@@ -507,17 +535,17 @@ export default function Manager() {
 														<td className="text-blue-700 border-l-2 border-gray-700">
 															<button
 																className="hover:scale-110"
-																onClick={() =>
-																{	setFdata({
-																	frecventa: x.frecventa,
-																	banda: x.band,
-																})
+																onClick={() => {
+																	setFdata({
+																		frecventa: x.frecventa,
+																		banda: x.band,
+																	});
 																	setFarr(
 																		farr.filter(function (farr) {
 																			return farr.frecventa != x.frecventa;
 																		})
-																	)}
-																}
+																	);
+																}}
 															>
 																{" "}
 																Edit
